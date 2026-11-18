@@ -2,7 +2,6 @@ using EFT.GameTriggers;
 using HarmonyLib;
 using SPT.Reflection.Patching;
 using System.Reflection;
-using UnityEngine;
 
 namespace SPTPropaneRemover.Patches
 {
@@ -14,11 +13,9 @@ namespace SPTPropaneRemover.Patches
         }
 
         [PatchPostfix]
-        private static void Postfix(HandlerExplosion __instance)
+        private static void PatchPostfix(HandlerExplosion __instance)
         {
-            GameObject go = __instance.gameObject;
-            
-            go.SetActive(false);
+            __instance.gameObject.SetActive(false);
         }
     }
 }
